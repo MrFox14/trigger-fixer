@@ -6,127 +6,143 @@ var replaceThis3;
 var replaceThis4;
 var replaceThis5;
 
-chrome.storage.sync.get("replaceThis1", function (obj) {
-	replaceThis1 = obj;
-	console.log(replaceThis1);
-	console.log(obj);
-});
+var replaceWith1;
+var replaceWith2;
+var replaceWith3;
+var replaceWith4;
+var replaceWith5;
 
-chrome.storage.sync.get("replaceThis2", function (obj) {
-	replaceThis2 = obj;
-});
+chrome.storage.sync.get([
+ 'replaceThis1',
+ 'replaceThis2',
+ 'replaceThis3',
+ 'replaceThis4',
+ 'replaceThis5',
+ 'replaceWith1',
+ 'replaceWith2',
+ 'replaceWith3',
+ 'replaceWith4',
+ 'replaceWith5'
+], function(result) {
+	
+	replaceThis1=result.replaceThis1;
+	replaceThis2=result.replaceThis2;
+	replaceThis3=result.replaceThis3;
+	replaceThis4=result.replaceThis4;
+	replaceThis5=result.replaceThis5;
+	
+	replaceWith1=result.replaceWith1;
+	replaceWith2=result.replaceWith2;
+	replaceWith3=result.replaceWith3;
+	replaceWith4=result.replaceWith4;
+	replaceWith5=result.replaceWith5;
+	
+	re1 = new RegExp(`\\b${replaceThis1}\\b`, 'i');
+	re2 = new RegExp(`\\b${replaceThis2}\\b`, 'i');
+	re3 = new RegExp(`\\b${replaceThis3}\\b`, 'i');
+	re4 = new RegExp(`\\b${replaceThis4}\\b`, 'i');
+	re5 = new RegExp(`\\b${replaceThis5}\\b`, 'i');
 
-chrome.storage.sync.get("replaceThis3", function (obj) {
-	replaceThis3 = obj;
-});
 
-chrome.storage.sync.get("replaceThis4", function (obj) {
-	replaceThis4 = obj;
-});
+if (replaceThis1 !== ""){
+	for (var i = 0; i < elements.length; i++) {
+			var element = elements[i];
 
-chrome.storage.sync.get("replaceThis5", function (obj) {
-	replaceThis5 = obj;
-});
+		for (var j = 0; j < element.childNodes.length; j++) {
+			var node = element.childNodes[j];
 
-console.log(replaceThis1);
-console.log(replaceThis2);
-console.log(replaceThis3);
-console.log(replaceThis4);
-console.log(replaceThis5);
+			if (node.nodeType === 3) {
+				var text = node.nodeValue;
+				var replacedText = text.replace(re1, String(replaceWith1));
 
-var replaceWith1 = "gra";
-var replaceWith2 = "gre";
-var replaceWith3 = "gri";
-var replaceWith4 = "gro";
-var replaceWith5 = "gru";
-
-re1 = new RegExp(`\\b${replaceThis1}\\b`, 'i');
-re2 = new RegExp(`\\b${replaceThis2}\\b`, 'i');
-re3 = new RegExp(`\\b${replaceThis3}\\b`, 'i');
-re4 = new RegExp(`\\b${replaceThis4}\\b`, 'i');
-re5 = new RegExp(`\\b${replaceThis5}\\b`, 'i');
-
-for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
-
-    for (var j = 0; j < element.childNodes.length; j++) {
-        var node = element.childNodes[j];
-
-        if (node.nodeType === 3) {
-            var text = node.nodeValue;
-            var replacedText = text.replace(re1, 'gra');
-
-            if (replacedText !== text) {
-                element.replaceChild(document.createTextNode(replacedText), node);
-            }
-        }
-    }
+				if (replacedText !== text) {
+					element.replaceChild(document.createTextNode(replacedText), node);
+				}
+			}
+		}
+	}
 }
 
-for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
+if (replaceThis2 !== ""){
+	for (var i = 0; i < elements.length; i++) {
+		var element = elements[i];
+	
+		for (var j = 0; j < element.childNodes.length; j++) {
+			var node = element.childNodes[j];
 
-    for (var j = 0; j < element.childNodes.length; j++) {
-        var node = element.childNodes[j];
+			if (node.nodeType === 3) {
+				var text = node.nodeValue;
+				var replacedText = text.replace(re2, String(replaceWith2));
 
-        if (node.nodeType === 3) {
-            var text = node.nodeValue;
-            var replacedText = text.replace(re2, 'gre');
-
-            if (replacedText !== text) {
-                element.replaceChild(document.createTextNode(replacedText), node);
-            }
-        }
-    }
+				if (replacedText !== text) {
+					element.replaceChild(document.createTextNode(replacedText), node);
+				}
+			}
+		}
+	}
 }
 
-for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
+if (replaceThis3 !== ""){
+	for (var i = 0; i < elements.length; i++) {
+		var element = elements[i];
 
-    for (var j = 0; j < element.childNodes.length; j++) {
-        var node = element.childNodes[j];
+		for (var j = 0; j < element.childNodes.length; j++) {
+			var node = element.childNodes[j];
 
-        if (node.nodeType === 3) {
-            var text = node.nodeValue;
-            var replacedText = text.replace(re3, 'gri');
+			if (node.nodeType === 3) {
+				var text = node.nodeValue;
+				var replacedText = text.replace(re3, String(replaceWith3));
 
-            if (replacedText !== text) {
-                element.replaceChild(document.createTextNode(replacedText), node);
-            }
-        }
-    }
+				if (replacedText !== text) {
+					element.replaceChild(document.createTextNode(replacedText), node);
+				}
+			}
+		}
+	}
 }
 
-for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
 
-    for (var j = 0; j < element.childNodes.length; j++) {
-        var node = element.childNodes[j];
+if (replaceThis4 !== ""){
+	for (var i = 0; i < elements.length; i++) {
+		var element = elements[i];
 
-        if (node.nodeType === 3) {
-            var text = node.nodeValue;
-            var replacedText = text.replace(re4, 'gro');
+		for (var j = 0; j < element.childNodes.length; j++) {
+			var node = element.childNodes[j];
 
-            if (replacedText !== text) {
-                element.replaceChild(document.createTextNode(replacedText), node);
-            }
-        }
-    }
+			if (node.nodeType === 3) {
+				var text = node.nodeValue;
+				var replacedText = text.replace(re4, String(replaceWith4));
+
+				if (replacedText !== text) {
+					element.replaceChild(document.createTextNode(replacedText), node);
+				}
+			}
+		}
+	}
 }
 
-for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
 
-    for (var j = 0; j < element.childNodes.length; j++) {
-        var node = element.childNodes[j];
+if (replaceThis5 !== ""){
+	for (var i = 0; i < elements.length; i++) {
+		var element = elements[i];
 
-        if (node.nodeType === 3) {
-            var text = node.nodeValue;
-            var replacedText = text.replace(re5, 'gru');
+		for (var j = 0; j < element.childNodes.length; j++) {
+			var node = element.childNodes[j];
 
-            if (replacedText !== text) {
-                element.replaceChild(document.createTextNode(replacedText), node);
-            }
-        }
-    }
+			if (node.nodeType === 3) {
+				var text = node.nodeValue;
+				var replacedText = text.replace(re5, String(replaceWith5));
+
+				if (replacedText !== text) {
+					element.replaceChild(document.createTextNode(replacedText), node);
+				}
+			}
+		}
+	}
 }
+
+
+
+
+});
+

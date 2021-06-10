@@ -1,23 +1,31 @@
 
 
 
+document.getElementById("submit").addEventListener("click", submitWords);
 
-	var replaceThis1 = document.getElementsByName("replaceThis1").value;
-	var replaceWith1 = document.getElementsByName("replaceWith1").value;
+
+function submitWords(){
+  console.log('asd');
+
+
+
+	var replaceThis1 = document.getElementById("replaceThis1").value;
+	var replaceWith1 = document.getElementById("replaceWith1").value;
 	
-	var replaceThis2 = document.getElementsByName("replaceThis2").value;
-	var replaceWith2 = document.getElementsByName("replaceWith2").value;
+	var replaceThis2 = document.getElementById("replaceThis2").value;
+	var replaceWith2 = document.getElementById("replaceWith2").value;
 	
-	var replaceThis3 = document.getElementsByName("replaceThis3").value;
-	var replaceWith3 = document.getElementsByName("replaceWith3").value;
+	var replaceThis3 = document.getElementById("replaceThis3").value;
+	var replaceWith3 = document.getElementById("replaceWith3").value;
 	
-	var replaceThis4 = document.getElementsByName("replaceThis4").value;
-	var replaceWith4 = document.getElementsByName("replaceWith4").value;
+	var replaceThis4 = document.getElementById("replaceThis4").value;
+	var replaceWith4 = document.getElementById("replaceWith4").value;
 	
-	var replaceThis5 = document.getElementsByName("replaceThis5").value;
-	var replaceWith5 = document.getElementsByName("replaceWith5").value;
+	var replaceThis5 = document.getElementById("replaceThis5").value;
+	var replaceWith5 = document.getElementById("replaceWith5").value;
 	
 	console.log(replaceThis1);
+	console.log(replaceThis2);
 	
 	chrome.storage.sync.set({'replaceThis1': replaceThis1})
 	chrome.storage.sync.set({'replaceThis2': replaceThis2})
@@ -30,3 +38,5 @@
 	chrome.storage.sync.set({'replaceWith3': replaceWith3})
 	chrome.storage.sync.set({'replaceWith4': replaceWith4})
 	chrome.storage.sync.set({'replaceWith5': replaceWith5})
+
+}
