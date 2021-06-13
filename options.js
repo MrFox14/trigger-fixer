@@ -52,7 +52,8 @@ chrome.storage.sync.get([
         withWord.setAttribute("id", "replaceWithWord" + i);
         withWord = replaceWithArr[i];
 
-
+		
+		let body = item.querySelector('.right');
         //line breaks go brrrrrrrrrrr
         body.append(thisWord);
         body.append(document.createElement("br"));
