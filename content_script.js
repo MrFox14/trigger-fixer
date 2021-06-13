@@ -1,5 +1,9 @@
+//declaration time
+
+//declare everything on the page as elements
 var elements = document.getElementsByTagName('*');
 
+//same old boring variable/comma delimited string variable declaration
 var replaceThisWord = "";
 var replaceWithWord = "";
 
@@ -7,55 +11,70 @@ var replaceThisCommaDel;
 var replaceWithCommaDel;
 
 
-
+//get stuff from storage
 chrome.storage.sync.get([
- 'replaceThis',
- 'replaceWith'
+    'replaceThis',
+    'replaceWith'
 ], function(result) {
-	
-	if (result.replaceThis !== undefined){replaceThisCommaDel = result.replaceThis};
-	if (result.replaceWith !== undefined){replaceWithCommaDel = result.replaceWith};
 
-	replaceThisCommaDel = replaceThisCommaDel.substring(1);
-	replaceWithCommaDel = replaceWithCommaDel.substring(1);
-	
-	replaceThisCommaDel = replaceThisCommaDel.slice(0, -1);
-	replaceWithCommaDel = replaceWithCommaDel.slice(0, -1);
+    //if there is anything in storage, set variables to that value
+    if (result.replaceThis !== undefined) {
+        replaceThisCommaDel = result.replaceThis
+    };
+    if (result.replaceWith !== undefined) {
+        replaceWithCommaDel = result.replaceWith
+    };
 
-	var replaceThisArr = replaceThisCommaDel.split(',');
-	var replaceWithArr = replaceWithCommaDel.split(',');
-	
-	var length = (replaceThisArr.length);
-	
-for (i = 1; i < length; i++) {
-	
-	replaceThisWord = replaceThisArr[i];
-	replaceWithWord = replaceWithArr[[i]];
-	replaceWords(replaceThisWord, replaceWithWord);
-}
+    //remove commas from the start and end, for comma delimitated string to array conversion
+    replaceThisCommaDel = replaceThisCommaDel.substring(1);
+    replaceWithCommaDel = replaceWithCommaDel.substring(1);
 
+    replaceThisCommaDel = replaceThisCommaDel.slice(0, -1);
+    replaceWithCommaDel = replaceWithCommaDel.slice(0, -1);
 
-function replaceWords(replaceThisText, ReplaceWithText) {
-	re = new RegExp(`\\b${replaceThisText}\\b`, 'i');
-	if (replaceThisText !== ""){
-		for (var i = 0; i < elements.length; i++) {
-				var element = elements[i];
+    //convert to array
+    var replaceThisArr = replaceThisCommaDel.split(',');
+    var replaceWithArr = replaceWithCommaDel.split(',');
 
-			for (var j = 0; j < element.childNodes.length; j++) {
-				var node = element.childNodes[j];
+    //set length to array length
+    var length = (replaceThisArr.length);
 
-				if (node.nodeType === 3) {
-					var text = node.nodeValue;
-					var replacedText = text.replace(re, String(ReplaceWithText));
+    //for every item in the array, run the function
+    for (i = 0; i < length; i++) {
 
-					if (replacedText !== text) {
-						element.replaceChild(document.createTextNode(replacedText), node);
-					}
-				}
-			}
-		}
-	}
-}
+        replaceThisWord = replaceThisArr[i];
+        replaceWithWord = replaceWithArr[[i]];
+        replaceWords(replaceThisWord, replaceWithWord);
+    }
+
+    //replace the words
+    function replaceWords(replaceThisText, ReplaceWithText) {
+
+        //create the regex
+        re = new RegExp(`\\b${replaceThisText}\\b`, 'i');
+
+        //if there is something to check
+        if (replaceThisText !== "") {
+
+            //look at everythign
+            for (var i = 0; i < elements.length; i++) {
+                var element = elements[i];
+
+                for (var j = 0; j < element.childNodes.length; j++) {
+                    var node = element.childNodes[j];
+
+                    //and replace anything that matches the regex with the new string
+                    if (node.nodeType === 3) {
+                        var text = node.nodeValue;
+                        var replacedText = text.replace(re, String(ReplaceWithText));
+
+                        if (replacedText !== text) {
+                            element.replaceChild(document.createTextNode(replacedText), node);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 });
-
