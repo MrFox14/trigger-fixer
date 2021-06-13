@@ -1,0 +1,18 @@
+body {
+  background-color: #000000;
+}
+
+button {
+  height: 60px;
+  width: 60px;
+  outline: 2px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #763232;
+  color: #FFFFFF;
+  text-align: center;
+  display: inline-block;
+  font-size: 13px;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
+}
