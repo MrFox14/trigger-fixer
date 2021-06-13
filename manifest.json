@@ -2,8 +2,11 @@
 "name": "Trigger Fixer", 
 "description": "Never feel uncomfortable again!", 
 "version": "1.0", 
-"manifest_version": 2,
-"permissions": ["storage", "activeTab"],
+"manifest_version": 3,
+  "permissions": ["storage", "activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html"
+  },
 "options_page": "options.html",
   "content_scripts":
   [
@@ -14,4 +17,5 @@
 	  "run_at": "document_end"
   }
   ]
+
 }
