@@ -13,7 +13,7 @@ Emmey contributed a bunch behind the scenes, everyone say thank you Emmey
 
 I have no idea what I'm doing
 * seriously
-* * wtf
+  * wtf
 * Why doesn't firefox do anything?!?!?
 
 - Emmey
