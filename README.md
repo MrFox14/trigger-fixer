@@ -8,3 +8,12 @@ Yeah, I'm doing this now. This is a chrome extension that allows you to:
 Pretty cool, right?
 
 Emmey contributed a bunch behind the scenes, everyone say thank you Emmey
+
+# trigger-fixer Firefox branch
+
+I have no idea what I'm doing
+* seriously
+* * wtf
+* Why doesn't firefox do anything?!?!?
+
+- Emmey
