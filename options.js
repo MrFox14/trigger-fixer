@@ -12,8 +12,8 @@ var replaceThisArr;
 var replaceWithArr;
 
 
-//big function, everything goes in here because chrome storage get is asynchronous, so it has to be like this
-chrome.storage.sync.get([
+//big function, everything goes in here because browser storage get is asynchronous, so it has to be like this
+browser.storage.sync.get([
     'replaceThis',
     'replaceWith'
 ], function(result) {
@@ -63,7 +63,11 @@ chrome.storage.sync.get([
         //add button
         let removeButton = document.createElement("button");
         removeButton.setAttribute("id", "removeButton" + i);
-        removeButton.innerHTML = 'Button ' + i;
+		var btty = "Button ";
+		var but = document.createElement('Button');
+		but.appendChild(document.createTextNode(btty));
+		document.body.appendChildbut) + i;
+        //removeButton.innerHTML = 'Button ' + i;
         body.appendChild(removeButton);
         var withID = "replaceWithWord" + i;
 
@@ -99,10 +103,10 @@ chrome.storage.sync.get([
 
 
             //save in chrome storage
-            chrome.storage.sync.set({
+            browser.storage.sync.set({
                 'replaceThis': replaceThisCommaDel
             });
-            chrome.storage.sync.set({
+            browser.storage.sync.set({
                 'replaceWith': replaceWithCommaDel
             });
 
@@ -151,10 +155,10 @@ chrome.storage.sync.get([
         replaceWithCommaDel = replaceWithCommaDel + replaceWithWord + ",";
 
         //save to chrome storage
-        chrome.storage.sync.set({
+        browser.storage.sync.set({
             'replaceThis': replaceThisCommaDel
         });
-        chrome.storage.sync.set({
+        browser.storage.sync.set({
             'replaceWith': replaceWithCommaDel
         });
 

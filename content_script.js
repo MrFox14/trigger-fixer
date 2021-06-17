@@ -12,7 +12,7 @@ var replaceWithCommaDel;
 
 
 //get stuff from storage
-chrome.storage.sync.get([
+browser.storage.sync.get([
     'replaceThis',
     'replaceWith'
 ], function(result) {
@@ -51,7 +51,7 @@ chrome.storage.sync.get([
     function replaceWords(replaceThisText, ReplaceWithText) {
 
         //create the regex
-        re = new RegExp(`\\b${replaceThisText}\\b`, 'g');
+        re = new RegExp(`\\b${replaceThisText}\\b`, 'i');
 
         //if there is something to check
         if (replaceThisText !== "") {
