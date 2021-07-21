@@ -1,4 +1,6 @@
 //declaration time
+var time;
+var refreshRate;
 
 //declare everything on the page as elements
 var elements = document.getElementsByTagName('*');
@@ -12,10 +14,12 @@ var replaceWithCommaDel;
 
 
 //get stuff from storage
-browser.storage.sync.get([
+chrome.storage.sync.get([
     'replaceThis',
-    'replaceWith'
+    'replaceWith',
+	'refreshMs'
 ], function(result) {
+
 
     //if there is anything in storage, set variables to that value
     if (result.replaceThis !== undefined) {
@@ -23,6 +27,9 @@ browser.storage.sync.get([
     };
     if (result.replaceWith !== undefined) {
         replaceWithCommaDel = result.replaceWith
+    };
+	if (result.refreshMs !== undefined) {
+        refreshRate = result.refreshMs
     };
 
     //remove commas from the start and end, for comma delimitated string to array conversion
@@ -40,18 +47,20 @@ browser.storage.sync.get([
     var length = (replaceThisArr.length);
 
     //for every item in the array, run the function
-    for (i = 0; i < length; i++) {
+    function rep(){
+		for (i = 0; i < length; i++) {
 
-        replaceThisWord = replaceThisArr[i];
-        replaceWithWord = replaceWithArr[[i]];
-        replaceWords(replaceThisWord, replaceWithWord);
-    }
+			replaceThisWord = replaceThisArr[i];
+			replaceWithWord = replaceWithArr[[i]];
+			replaceWords(replaceThisWord, replaceWithWord);
+		}
+	}
 
     //replace the words
     function replaceWords(replaceThisText, ReplaceWithText) {
 
         //create the regex
-        re = new RegExp(`\\b${replaceThisText}\\b`, 'i');
+        re = new RegExp(`\\b${replaceThisText}\\b`, 'gi');
 
         //if there is something to check
         if (replaceThisText !== "") {
@@ -76,5 +85,14 @@ browser.storage.sync.get([
             }
         }
     }
-
+	
+	//Run every few seconds
+	function timer() {
+		time = setInterval(rep, refreshRate);
+		console.log(refreshRate);
+	}
+	
+	//runs on load and runs after loading
+	timer();
 });
+

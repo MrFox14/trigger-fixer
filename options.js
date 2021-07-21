@@ -4,6 +4,7 @@
 var replaceThisCommaDel = ",";
 var replaceWithCommaDel = ",";
 
+
 //setting body as the body element
 var body = document.getElementsByTagName("body")[0];
 
@@ -12,10 +13,10 @@ var replaceThisArr;
 var replaceWithArr;
 
 
-//big function, everything goes in here because browser storage get is asynchronous, so it has to be like this
-browser.storage.sync.get([
+//big function, everything goes in here because chrome storage get is asynchronous, so it has to be like this
+chrome.storage.sync.get([
     'replaceThis',
-    'replaceWith'
+    'replaceWith',
 ], function(result) {
 
     //declare submit event listener
@@ -28,6 +29,9 @@ browser.storage.sync.get([
     if (result.replaceWith !== undefined) {
         replaceWithCommaDel = replaceWithCommaDel + String(result.replaceWith)
     };
+	if (result.replaceWith !== undefined) {
+        refreshrate = result.replaceWith
+    };
 
     //remove the first character (comma)
     replaceThisCommaDel = replaceThisCommaDel.substring(1);
@@ -37,39 +41,46 @@ browser.storage.sync.get([
     //put comma delimited values into an array
     var replaceThisArr = replaceThisCommaDel.split(',');
     var replaceWithArr = replaceWithCommaDel.split(',');
+	
+	//adds the special div element to a variable
+	var div = document.getElementById('div1');
 
 
     //display all the resulty things
     for (i = 1; i < replaceThisArr.length - 1; i++) {
-
+		
         //display replaceThisWord value
         let thisWord = document.createElement('span');
         thisWord.setAttribute("id", "replaceThisWord" + i);
         thisWord = replaceThisArr[i];
+		
+		//display filler
+		let fillerPhrase = document.createElement('span');
+        fillerPhrase.setAttribute("id", "fillerPhrase" + i);
+        fillerPhrase = "is replaced by";
 
         //display replaceWithWord value
         let withWord = document.createElement('span');
         withWord.setAttribute("id", "replaceWithWord" + i);
         withWord = replaceWithArr[i];
 
-
+		
+		
         //line breaks go brrrrrrrrrrr
-        body.append(thisWord);
-        body.append(document.createElement("br"));
-        body.append(withWord);
-        body.append(document.createElement("br"));
+        div.append(thisWord + " " + fillerPhrase + " " + withWord);
+        div.append(document.createElement("br"));
+		
 
 
         //add button
         let removeButton = document.createElement("button");
         removeButton.setAttribute("id", "removeButton" + i);
-		var btty = "Button ";
-		var but = document.createElement('Button');
-		but.appendChild(document.createTextNode(btty));
-		document.body.appendChildbut) + i;
-        //removeButton.innerHTML = 'Button ' + i;
-        body.appendChild(removeButton);
+		removeButton.setAttribute("class", "buttona button2");
+        removeButton.innerHTML = 'Remove';
+        div.appendChild(removeButton);
         var withID = "replaceWithWord" + i;
+		div.append(document.createElement("br"));
+		div.append(document.createElement("br"));
 
 
         //button click listener function
@@ -103,10 +114,10 @@ browser.storage.sync.get([
 
 
             //save in chrome storage
-            browser.storage.sync.set({
+            chrome.storage.sync.set({
                 'replaceThis': replaceThisCommaDel
             });
-            browser.storage.sync.set({
+            chrome.storage.sync.set({
                 'replaceWith': replaceWithCommaDel
             });
 
@@ -155,10 +166,10 @@ browser.storage.sync.get([
         replaceWithCommaDel = replaceWithCommaDel + replaceWithWord + ",";
 
         //save to chrome storage
-        browser.storage.sync.set({
+        chrome.storage.sync.set({
             'replaceThis': replaceThisCommaDel
         });
-        browser.storage.sync.set({
+        chrome.storage.sync.set({
             'replaceWith': replaceWithCommaDel
         });
 
@@ -166,3 +177,4 @@ browser.storage.sync.get([
 
     }
 });
+
