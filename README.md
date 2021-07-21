@@ -7,4 +7,6 @@ Yeah, I'm doing this now. This is a chrome extension that allows you to:
 
 Pretty cool, right?
 
-Emmey contributed a bunch behind the scenes, everyone say thank you Emmey
+Emmey contributed a bunch behind the scenes, everyone say thank you Emmey (I, Emmey, have created this page)
+
+https://addons.mozilla.org/en-US/firefox/addon/trigger-fixer/
