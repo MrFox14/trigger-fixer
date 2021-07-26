@@ -1,4 +1,4 @@
-# trigger-fixer
+# trigger-fixer | FireFox port: Fork of EchoDevG's Chrome Extenstion
 
 Yeah, I'm doing this now. This is a chrome extension that allows you to:
 * input words that may cause you upset, and choose what to replace them with
