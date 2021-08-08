@@ -3,6 +3,20 @@
 body {
   background-color: #000000;
     font-family: 'Poppins', sans-serif;
+	width: 100%;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+}
+
+#centreT {
+	background-color: #000000;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 .button {
