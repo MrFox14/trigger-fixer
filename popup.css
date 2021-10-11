@@ -17,10 +17,11 @@ body {
 	margin-bottom: 20px;
 	margin-left: 10px;
 	margin-right: 10px;
+	border-radius: 8px;
 }
 
 .button {
-  background-color: #763232;
+  background-color: #F3F0D7;
   border: none;
   color: white;
   height: 50px;
@@ -38,10 +39,10 @@ body {
 .button1 {
   background-color: white; 
   color: black; 
-  border: 2px solid #763232;
+  border: 2px solid #5E454B;
 }
 
 .button1:hover {
-  background-color: #F7D59C;
+  background-color: #5E454B;
   color: white;
 }
